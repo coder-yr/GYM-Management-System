@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Member Dashboard</title>
+  <link rel="stylesheet" href="/memberdashboard.css" />
+  
+</head>
+<body>
+
+  <main class="container">
+    <h1>Welcome, <%= user.name %>!</h1>
+
+    <!-- Flash Messages -->
+    <% if (messages.success && messages.success.length > 0) { %>
+      <div class="alert alert-success">
+        <% messages.success.forEach(msg => { %>
+          <p><%= msg %></p>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <% if (messages.error && messages.error.length > 0) { %>
+      <div class="alert alert-danger">
+        <% messages.error.forEach(msg => { %>
+          <p><%= msg %></p>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <!-- Membership Details -->
+    <section>
+      <h2>Your Membership</h2>
+      <% if (membership && membership.plan) { %>
+        <p><strong>Plan:</strong> <%= membership.plan.name %></p>
+        <p><strong>Price:</strong> ₹<%= membership.price %></p>
+        <p><strong>Start Date:</strong> <%= membership.startDate ? membership.startDate.toDateString() : 'N/A' %></p>
+      <% } else { %>
+        <p>You have not selected a membership plan yet.</p>
+        <a href="/membership/select" class="btn">Choose Plan</a>
+      <% } %>
+    </section>
+
+    <!-- Diet Plan -->
+    <section>
+      <h2>Your Diet Plan</h2>
+      <% if (dietPlan) { %>
+        <p><%= dietPlan.description || 'No description available.' %></p>
+      <% } else { %>
+        <p>No diet plan assigned yet.</p>
+      <% } %>
+    </section>
+
+    <!-- Notifications -->
+    <section>
+      <h2>Notifications</h2>
+      <% if (notifications && notifications.length > 0) { %>
+        <ul>
+          <% notifications.forEach(note => { %>
+            <li>
+              <%= note.message %>
+              <small>(<%= new Date(note.date).toLocaleString() %>)</small>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>No new notifications.</p>
+      <% } %>
+    </section>
+
+    <!-- Payment Receipts -->
+    <section>
+      <h2>Payment Receipts</h2>
+      <% if (receipts && receipts.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Amount (₹)</th>
+              <th>Purchase Date</th>
+              <th>Receipt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% receipts.forEach(receipt => { %>
+              <tr>
+                <td><%= receipt.membershipPlan ? receipt.membershipPlan.name : 'N/A' %></td>
+                <td><%= receipt.amount %></td>
+                <td><%= receipt.purchaseDate ? new Date(receipt.purchaseDate).toDateString() : 'N/A' %></td>
+                <td>
+                  <% if (receipt.receiptUrl) { %>
+                    <a href="<%= receipt.receiptUrl %>" target="_blank" rel="noopener">View PDF</a>
+                  <% } else { %>
+                    N/A
+                  <% } %>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No payment receipts found.</p>
+      <% } %>
+    </section>
+  </main>
+
+</body>
+</html>

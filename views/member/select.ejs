@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Select Membership Plan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/select.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Select a Membership Plan</h1>
+
+    <% if (messages.error && messages.error.length > 0) { %>
+      <div class="message-error">
+        <% messages.error.forEach(function(error) { %>
+          <p><%= error %></p>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <% if (messages.success && messages.success.length > 0) { %>
+      <div class="message-success">
+        <% messages.success.forEach(function(success) { %>
+          <p><%= success %></p>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <% if (plans && plans.length > 0) { %>
+      <form action="/membership/select" method="POST">
+        <% plans.forEach(function(plan) { %>
+          <div class="plan-card">
+            <input type="radio" id="plan-<%= plan._id %>" name="planId" value="<%= plan._id %>" required />
+            <label for="plan-<%= plan._id %>">
+              <strong><%= plan.name %></strong> - ₹<%= plan.price %><br />
+              <small><%= plan.description %></small>
+            </label>
+          </div>
+        <% }); %>
+        <button type="submit">Select Plan</button>
+      </form>
+    <% } else { %>
+      <p>No membership plans available at the moment.</p>
+    <% } %>
+
+    <div class="back-link">
+      <a href="/member/dashboard">← Back to Dashboard</a>
+    </div>
+  </div>
+
+</body>
+</html>

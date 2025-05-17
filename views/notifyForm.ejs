@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Send Notification</title>
+ <link rel="stylesheet" href="/notify.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Send Notification to <%= user.name %></h1>
+
+    <% if (messages.error) { %>
+      <div class="message error"><%= messages.error %></div>
+    <% } %>
+
+    <% if (messages.success) { %>
+      <div class="message success"><%= messages.success %></div>
+    <% } %>
+
+    <form action="/admin/notify/<%= user._id %>" method="POST">
+      <textarea name="message" rows="5" placeholder="Enter your notification here..."></textarea>
+      <button type="submit">Send Notification</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+ body {
+      background: linear-gradient(to right, #2c3e50, #3498db);
+      color: white;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .home-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+    }
+    .btn-group {
+      margin-top: 20px;
+    }
+    .btn-group a {
+      margin: 10px;
+    }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Diet Plan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container my-4">
+    <h1 class="text-center mb-4">Edit Diet Plan</h1>
+
+    <!-- Edit Diet Plan Form -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2>Edit Diet Plan</h2>
+      </div>
+      <div class="card-body">
+        <form action="/admin/edit-diet/<%= dietPlan._id %>" method="POST">
+          <div class="mb-3">
+            <label for="dietPlanName" class="form-label">Diet Plan Name</label>
+            <input type="text" class="form-control" id="dietPlanName" name="dietPlanName" value="<%= dietPlan.name %>" required>
+          </div>
+          <div class="mb-3">
+            <label for="dietPlanDescription" class="form-label">Diet Plan Description</label>
+            <textarea class="form-control" id="dietPlanDescription" name="dietPlanDescription" rows="4" required><%= dietPlan.description %></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Diet Plan</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="mt-5">
+      <p class="text-center">&copy; 2025 Your Gym Management System</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

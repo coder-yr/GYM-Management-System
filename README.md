@@ -38,7 +38,8 @@ Basic logging is implemented using `console.log()` for key actions like authenti
 
 
 ## GitHub
-👉 [Your GitHub Link Here]
+👉 [https://github.com/coder-yr/GYM-Management-System](https://github.com/coder-yr/GYM-Management-System)
+
 
 ## Future Scope
 - Supplement store integration

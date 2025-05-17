@@ -46,4 +46,6 @@ Basic logging is implemented using `console.log()` for key actions like authenti
 - Personal trainer module
 - Member attendance tracking
 
+for testing -
+admin - admin2@gmail.com  pass -1234
 

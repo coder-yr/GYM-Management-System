@@ -45,6 +45,4 @@ Basic logging is implemented using `console.log()` for key actions like authenti
 - Personal trainer module
 - Member attendance tracking
 
-## Report
-📄 [Download Full Project Report](./GYM_Management_Project_Report.docx)
 

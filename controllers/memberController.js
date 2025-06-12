@@ -2,7 +2,7 @@ const User = require('../models/User');
 const Membership = require('../models/Membership');
 const MembershipPlan = require('../models/MembershipPlan');
 const Payment = require('../models/Payment');
-const Receipt = require('../models/Receipt');
+const Receipt = require('../models/receipt');
 const Notification = require('../models/Notification');
 const { generateReceiptPDF } = require('../utils/pdfGenerator');
 

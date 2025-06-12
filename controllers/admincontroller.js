@@ -1,6 +1,6 @@
 const User = require('../models/User');
 const DietPlan = require('../models/DietPlan');
-const Receipt = require('../models/Receipt');
+const Receipt = require('../models/receipt');
 const Notification = require('../models/Notification');
 const Membership = require('../models/Membership');
 

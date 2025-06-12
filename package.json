@@ -1,4 +1,6 @@
-{
+{ "engine" : {
+  "node" : "v20.18.0"
+},
   "name": "gym-sys-new",
   "version": "1.0.0",
   "main": "index.js",

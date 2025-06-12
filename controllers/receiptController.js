@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const PDFDocument = require('pdfkit');
-const Receipt = require('../models/Receipt');
+const Receipt = require('../models/receipt');
 const MembershipPlan = require('../models/MembershipPlan');
 
 exports.createReceipt = async (userId, membershipPlanId, amount, paymentId = null) => {

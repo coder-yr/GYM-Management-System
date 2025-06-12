@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Receipt = require('../models/Receipt');
+const Receipt = require('../models/receipt');
 const path = require('path');
 const fs = require('fs');
 

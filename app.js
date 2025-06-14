@@ -55,6 +55,8 @@ app.use((req, res, next) => {
 
 
 // Session Config
+app.set('trust proxy', 1);  // Add this line before your session middleware if behind a proxy/load balancer (e.g., Heroku, nginx)
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -66,8 +68,9 @@ app.use(
     }),
     cookie: {
       maxAge: 1000 * 60 * 60 * 24, // 1 day
-      secure: process.env.NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === 'production', // secure cookie only in prod
       sameSite: 'lax',
+      // Consider explicitly adding domain here if your domain setup is complex
     },
   })
 );

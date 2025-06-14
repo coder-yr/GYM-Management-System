@@ -44,7 +44,7 @@ exports.memberDashboard = async (req, res) => {
 // Show Membership Selection Page
 exports.showSelectMembership = async (req, res) => {
   try {
-    const plans = await MembershipPlan.find({});
+const plans = await MembershipPlan.find({});
     res.render('member/select', {
       plans,
       messages: {

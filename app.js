@@ -29,7 +29,7 @@ mongoose
 
 // Model Imports
 const User = require('./models/User');
-const Membership = require('./models/Membership');
+const MembershipPlan = require('./models/MembershipPlan');
 const Payment = require('./models/Payment');
 const DietPlan = require('./models/DietPlan');
 const Receipt = require('./models/receipt');
@@ -120,6 +120,17 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
+app.get('/debug/plans', async (req, res) => {
+  try {
+    const plans = await MembershipPlan.find({});
+    console.log('Plans fetched:', plans);
+    res.json({ plans, count: plans.length });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 // Member Dashboard Route 
 app.get('/member/dashboard', isLoggedIn, async (req, res) => {
   try {
@@ -135,7 +146,7 @@ app.get('/member/dashboard', isLoggedIn, async (req, res) => {
       return res.redirect('/auth/login');
     }
 
-    const membership = await Membership.findOne({ user: user._id }).populate('plan');
+    const membership = await MembershipPlan.findOne({ user: user._id }).populate('plan');
 
     // Fetch receipts array
     const receipts = await Receipt.find({ userId: user._id })
@@ -172,10 +183,15 @@ app.use('/membership', selectRoutes);
 app.use('/receipts', receiptRoutes);
 app.use('/admin', adminRoutes);
 
+
+
 // 404 Page
 app.use((req, res) => {
   res.status(404).render('404');
 });
+
+
+
 
 // Start Server
 const PORT = process.env.PORT || 3000;
